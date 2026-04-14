@@ -1,0 +1,220 @@
+/* ============================================
+   Mixins Responsive
+   ============================================ */
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint =='xs' {
+        @media (max-width: 319px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='sm' {
+        @media (max-width: 479px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='md' {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='lg' {
+        @media (max-width: 1023px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='xl' {
+        @media (max-width: 1279px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='up-sm' {
+        @media (min-width: 480px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='up-md' {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='up-lg' {
+        @media (min-width: 1024px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='up-xl' {
+        @media (min-width: 1280px) {
+            @content;
+        }
+    }
+}
+
+@mixin responsive-grid($cols-mobile, $cols-tablet, $cols-desktop, $gap: var(--spacing-lg)) {
+    display: grid;
+    grid-template-columns: repeat($cols-mobile, 1fr);
+    gap: $gap;
+
+    @include respond-to('up-md') {
+        grid-template-columns: repeat($cols-tablet, 1fr);
+    }
+
+    @include respond-to('up-lg') {
+        grid-template-columns: repeat($cols-desktop, 1fr);
+    }
+}
+
+@mixin responsive-flex($direction-mobile: column, $direction-desktop: row) {
+    display: flex;
+    flex-direction: $direction-mobile;
+
+    @include respond-to('up-md') {
+        flex-direction: $direction-desktop;
+    }
+}
+
+@mixin responsive-font($size-mobile, $size-tablet, $size-desktop) {
+    font-size: $size-mobile;
+
+    @include respond-to('up-md') {
+        font-size: $size-tablet;
+    }
+
+    @include respond-to('up-lg') {
+        font-size: $size-desktop;
+    }
+}
+
+@mixin responsive-padding($mobile, $tablet, $desktop) {
+    padding: $mobile;
+
+    @include respond-to('up-md') {
+        padding: $tablet;
+    }
+
+    @include respond-to('up-lg') {
+        padding: $desktop;
+    }
+}
+
+@mixin responsive-gap($mobile, $tablet, $desktop) {
+    gap: $mobile;
+
+    @include respond-to('up-md') {
+        gap: $tablet;
+    }
+
+    @include respond-to('up-lg') {
+        gap: $desktop;
+    }
+}
+
+@mixin hide-on($breakpoint) {
+    @include respond-to($breakpoint) {
+        display: none !important;
+    }
+}
+
+@mixin show-on($breakpoint) {
+    display: none;
+
+    @include respond-to($breakpoint) {
+        display: block;
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin gradient-text($from: var(--color-primary), $to: var(--color-secondary)) {
+    background: linear-gradient(135deg, $from, $to);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@mixin gradient-bg($from: var(--color-primary), $to: var(--color-secondary)) {
+    background: linear-gradient(135deg, $from, $to);
+}
+
+@mixin hover-lift {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+@mixin focus-outline {
+    &:focus-visible {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+}
+
+/* ============================================
+   Mixins Responsive Padding/Margin
+   ============================================ */
+
+@mixin responsive-section-padding {
+    padding: var(--spacing-lg) 0;
+
+    @media (min-width: 768px) {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    @media (min-width: 1024px) {
+        padding: var(--spacing-3xl) 0;
+    }
+}
+
+@mixin responsive-section-padding-vertical($mobile-top, $mobile-bottom, $tablet-top, $tablet-bottom, $desktop-top, $desktop-bottom) {
+    padding: $mobile-top 0 $mobile-bottom;
+
+    @media (min-width: 768px) {
+        padding: $tablet-top 0 $tablet-bottom;
+    }
+
+    @media (min-width: 1024px) {
+        padding: $desktop-top 0 $desktop-bottom;
+    }
+}
+
+@mixin responsive-text-size($mobile, $tablet, $desktop) {
+    font-size: $mobile;
+
+    @media (min-width: 768px) {
+        font-size: $tablet;
+    }
+
+    @media (min-width: 1024px) {
+        font-size: $desktop;
+    }
+}
+
+@mixin card-hover {
+    transition: all var(--transition-base);
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+    }
+}

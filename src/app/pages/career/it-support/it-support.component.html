@@ -1,0 +1,94 @@
+<section class="career-hero">
+  <div class="container">
+    <div class="hero-content text-center">
+      <h1 class="page-title fade-in">IT Support</h1>
+      <p class="page-subtitle fade-in">
+        Expert en support technique et administration systèmes
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="experience-section section">
+  <div class="container">
+    <h2 class="section-title text-center">Expériences Professionnelles</h2>
+    <div class="experiences-timeline">
+      <div class="experience-card card fade-in" *ngFor="let exp of experiences">
+        <div class="experience-header">
+          <h3 class="experience-title">{{ exp.title }}</h3>
+          <span class="experience-period">{{ exp.period }}</span>
+        </div>
+        <div class="experience-company">{{ exp.company }}</div>
+        <p class="experience-description">{{ exp.description }}</p>
+        <div class="achievements">
+          <h4 class="achievements-title">Responsabilités:</h4>
+          <ul class="achievements-list">
+            <li *ngFor="let achievement of exp.achievements">{{ achievement }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills-section section">
+  <div class="container">
+    <h2 class="section-title text-center">Compétences Techniques</h2>
+    <div class="skills-grid">
+      <div class="skill-badge fade-in" *ngFor="let skill of skills">
+        <span class="skill-name">{{ skill.name }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects-section section">
+  <div class="container">
+    <h2 class="section-title text-center">Réalisations Clés</h2>
+    <div class="projects-grid">
+      <div class="project-card card fade-in" *ngFor="let project of projects">
+        <div class="project-header">
+          <h3 class="project-title">{{ project.title }}</h3>
+        </div>
+        <p class="project-description">{{ project.description }}</p>
+
+        <div class="technologies">
+          <h4 class="tech-title">Technologies:</h4>
+          <div class="tech-tags">
+            <span class="tech-tag" *ngFor="let tech of project.technologies">{{ tech }}</span>
+          </div>
+        </div>
+
+        <div class="achievements">
+          <h4 class="achievements-title">Points clés:</h4>
+          <ul class="achievements-list">
+            <li *ngFor="let achievement of project.achievements">{{ achievement }}</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tools-section section">
+  <div class="container">
+    <h2 class="section-title text-center">Outils Maîtrisés</h2>
+    <div class="certifications-grid">
+      <div class="certification-card card fade-in" *ngFor="let tool of tools">
+        <span class="cert-name">{{ tool }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="certifications-section section">
+  <div class="container">
+    <h2 class="section-title text-center">Certifications</h2>
+    <div class="certifications-grid">
+      <div class="certification-card card fade-in" *ngFor="let cert of certifications">
+        <span class="cert-name">{{ cert }}</span>
+      </div>
+    </div>
+  </div>
+</section>

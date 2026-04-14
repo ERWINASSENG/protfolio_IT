@@ -1,0 +1,101 @@
+/* ============================================
+   SCSS Variables - Palette Propulse
+   ============================================ */
+
+// Breakpoints Responsive (Mobile First)
+$breakpoint-xs: 320px;   // Extra small phones
+$breakpoint-sm: 480px;   // Small phones
+$breakpoint-md: 768px;   // Tablets
+$breakpoint-lg: 1024px;  // Large tablets / Small desktop
+$breakpoint-xl: 1280px;  // Desktop
+$breakpoint-2xl: 1536px; // Large desktop
+
+// Couleurs principales de la palette Propulse
+$propulse-green-dark: #19520d;
+$propulse-beige-gold: #b58e49;
+$text-dark: #333;
+$text-light: #f4f4f4;
+
+// SCSS Variables for use in mixins
+$color-primary: $propulse-green-dark;
+$color-primary-light: #bfef45;
+$color-secondary: $propulse-beige-gold;
+
+// Couleurs de fond des sections (SCSS variables)
+$background-light: #eef1f5;        // Utilisé par hero-section, etc.
+$background-light-grey: #f7f9fc;   // Utilisé par about-page (detailed-section), team-section
+$background-dark-grey: #eff2f7;    // Utilisé par about-page (values-detailed-section)
+$background-stats: #eef7f8;        // Utilisé par stats-section
+$background-portfolio: #f8f8f8;    // Utilisé par portfolio-section
+$background-testimonials: #f0f0f5; // Utilisé par testimonials-section
+$background-section: #eef7f8;      // Réutilisé pour services-section
+
+// Couleurs spécifiques
+$card-background: #ffffff;
+
+// Ombres
+$shadow-color: rgba(0, 0, 0, 0.1);
+$shadow-light: rgba(0, 0, 0, 0.08);
+$shadow-heavy: rgba(0, 0, 0, 0.15);
+
+// Autres variables (ex: typos)
+$font-primary: 'Montserrat', sans-serif;
+$font-mono: 'Roboto Mono', monospace;
+
+// Additional SCSS variables for component styles
+$color-bg-secondary: $background-light;
+$color-bg-card: $card-background;
+$color-bg-section: $background-section;
+$color-text-primary: $text-dark;
+$color-text-secondary: #666666;
+$color-border: #e2e8f0;
+$color-overlay: rgba(0, 0, 0, 0.3);
+
+// Spacing variables
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 4rem;
+$spacing-4xl: 5rem;
+
+// Font sizes
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.875rem;
+$font-size-4xl: 2.25rem;
+
+// Font weights
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Line heights
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// Border radius
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+$radius-xl: 1rem;
+$radius-2xl: 1.5rem;
+$radius-full: 9999px;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 #{$shadow-light};
+$shadow-md: 0 4px 6px -1px #{$shadow-color}, 0 2px 4px -1px #{$shadow-light};
+$shadow-lg: 0 10px 15px -3px #{$shadow-color}, 0 4px 6px -2px #{$shadow-light};
+$shadow-xl: 0 20px 25px -5px #{$shadow-color}, 0 10px 10px -5px #{$shadow-heavy};
+
+// Transitions
+$transition-base: 300ms ease-in-out;
+$transition-smooth: 500ms ease-in-out;

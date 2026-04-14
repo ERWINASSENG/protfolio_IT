@@ -1,0 +1,320 @@
+<div class="about-page">
+  <!-- SECTION HERO -->
+  <section class="about-hero-section" #heroSection [@heroSlideIn]="heroAnimationState">
+    <!-- Arrière-plan digital -->
+    <div class="digital-background">
+      <canvas #digitalCanvas class="digital-canvas"></canvas>
+      <div class="digital-grid">
+        <div class="grid-lines"></div>
+        <div class="grid-overlay"></div>
+      </div>
+      <div class="floating-elements">
+        <div class="element" *ngFor="let i of [1,2,3]; let idx = index" [ngClass]="'element-' + i">
+          <div class="element-core"></div>
+          <div class="element-ring ring-1"></div>
+          <div class="element-ring ring-2"></div>
+        </div>
+      </div>
+      <div class="digital-waves">
+        <div class="wave" *ngFor="let i of [1,2,3]; let idx = index" [ngClass]="'wave-' + i"></div>
+      </div>
+      <div class="connectors">
+        <svg class="connector-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+          <path class="connector-path path-1" d="M100,200 Q300,100 500,200 T900,150"></path>
+          <path class="connector-path path-2" d="M200,400 Q400,300 600,400 T1000,350"></path>
+          <path class="connector-path path-3" d="M50,600 Q250,500 450,600 T850,550"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Container hero -->
+    <div class="hero-container">
+      <!-- Contenu hero -->
+      <div class="hero-content" [@contentAnimation]="contentAnimationState">
+        <h1 class="hero-title">
+          <span class="title-line">Gestionnaire</span>
+          <span class="title-highlight">
+            Polyvalente
+            <div class="highlight-underline"></div>
+          </span>
+        </h1>
+
+        <p class="hero-description">
+          Professionnel polyvalent avec une expertise en
+          <span class="text-highlight">informatique</span>.
+          Spécialisé dans le support IT et le développement d'applications.
+        </p>
+
+        <!-- Statistiques -->
+        <div class="hero-stats">
+          <div class="stat-item" *ngFor="let stat of quickStats; let i = index" [@statAnimation]="stat.animationState">
+            <div class="stat-content">
+              <div class="stat-number">{{ stat.value }}</div>
+              <div class="stat-label">{{ stat.label }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Informations de contact -->
+        <div class="contact-info-compact">
+          <div class="contact-item">
+            <span>Douala, Cameroun</span>
+          </div>
+          <div class="contact-item">
+            <span>(+237) 6 96 13 64 83</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="hero-actions">
+          <a routerLink="/contact" class="btn btn-primary">
+            <span class="btn-text">Me Contacter</span>
+          </a>
+          <a href="#profile" class="btn btn-secondary" (click)="scrollToSection('profile')">
+            <span class="btn-text">Voir Mon Profil</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Image Hero -->
+      <div class="hero-image">
+        <img src="IMG-20250403-WA0075.jpg" alt="Erwin Alberic Asseng" class="hero-img image-dark-filter">
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION PROFIL -->
+  <section class="team-section section" id="profile" #teamSection [@sectionSlideIn]="teamAnimationState">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="title-main">Profil</span>
+          <span class="title-highlight">Professionnel</span>
+        </h2>
+        <p class="section-intro">
+          Découvrez mon parcours, mes compétences et ma passion pour les technologies qui
+          <span class="highlight">transforment</span> les entreprises.
+        </p>
+      </div>
+
+      <div class="profile-content">
+        <div class="profile-card" *ngFor="let member of teamMembers" [@memberAnimation]="member.animationState">
+          <!-- En-tête du profil -->
+          <div class="profile-header">
+            <div class="profile-photo-container">
+              <div class="photo-frame">
+                <img src="IMG-20250403-WA0075.jpg" alt="Photo de profil" class="profile-photo">
+                <div class="photo-overlay">
+
+                </div>
+              </div>
+              <div class="member-status">
+                <div class="status-dot"></div>
+                <span>Disponible pour des projets</span>
+              </div>
+            </div>
+
+            <div class="profile-info">
+              <h3 class="member-name">{{ member.name }}</h3>
+              <p class="member-role">{{ member.role }}</p>
+              <div class="contact-details">
+                <div class="contact-detail">
+                  <a [href]="'mailto:' + member.social.email">
+                    {{ member.social.email }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Corps du profil -->
+          <div class="profile-body">
+            <div class="profile-bio">
+              <h4>À Propos</h4>
+              <p>{{ member.bio }}</p>
+            </div>
+
+            <div class="profile-skills">
+              <h4>Compétences Clés</h4>
+              <div class="skills-grid">
+                <span class="skill-tag" *ngFor="let skill of member.skills">
+                  {{ skill }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION EXPERTISE -->
+  <section class="story-section section" #storySection [@sectionSlideIn]="storyAnimationState">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="title-main">Domaines de</span>
+          <span class="title-highlight">Compétence</span>
+        </h2>
+        <p class="section-intro">
+          Plus de 3 ans d'expérience dans le support IT et le développement.
+          Une expertise complète pour des <span class="highlight">solutions globales</span> et performantes.
+        </p>
+      </div>
+
+      <div class="expertise-grid">
+        <div class="expertise-card" *ngFor="let block of storyBlocks; let i = index"
+          [@blockAnimation]="block.animationState">
+          <div class="card-content">
+            <h3>{{ getExpertiseTitle(i) }}</h3>
+            <p>{{ getExpertiseDescription(i) }}</p>
+            <div class="card-features">
+              <div class="feature-item" *ngFor="let feature of getExpertiseFeatures(i)">
+                <span>{{ feature }}</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a routerLink="/contact" class="btn btn-small btn-primary">
+                <span>Me Contacter</span>
+              </a>
+              <a [routerLink]="getCarriereLink(i)" class="btn btn-small btn-secondary">
+                <span>Carrière</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte Profil Freelance -->
+        <div class="expertise-card freelance-profile-card" [@blockAnimation]="freelanceProfileState">
+          <div class="card-content">
+            <h3>Développeur Freelance</h3>
+            <p>Développeur freelance passionné avec plus de 3 ans d'expérience. Je propose des solutions IT complètes,
+              du développement web aux intégrations système, adaptées aux besoins spécifiques de chaque client.</p>
+            <div class="card-features">
+              <div class="feature-item">
+                <span>3+ ans d'expérience</span>
+              </div>
+              <div class="feature-item">
+                <span>15+ projets réalisés</span>
+              </div>
+              <div class="feature-item">
+                <span>100% clients satisfaits</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a routerLink="/contact" class="btn btn-small btn-primary">
+                <span>Me Contacter</span>
+              </a>
+              <a routerLink="/career/freelance-dev" class="btn btn-small btn-secondary">
+                <span>Carrière</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION VALEURS -->
+  <section class="values-section section" id="values" #valuesSection [@sectionSlideIn]="valuesAnimationState">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="title-main">Valeurs</span>
+          <span class="title-highlight">Fondamentales</span>
+        </h2>
+        <p class="section-intro">
+          Les principes qui guident mon travail et mes relations professionnelles,
+          pour des <span class="highlight">collaborations réussies</span> et des résultats durables.
+        </p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card" *ngFor="let value of values" [@cardAnimation]="value.animationState">
+          <div class="card-background">
+            <div class="card-gradient"></div>
+          </div>
+
+          <div class="value-content">
+            <h3 class="value-title">{{ value.title }}</h3>
+            <p class="value-description">{{ value.description }}</p>
+          </div>
+
+          <div class="card-shine"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION PARCOURS SCOLAIRE -->
+  <section class="education-section section">
+    <div class="container">
+      <h2 class="section-title text-center">Parcours Scolaire</h2>
+
+      <div class="education-timeline">
+        <div class="education-card card fade-in" *ngFor="let edu of education; let last = last"
+          [ngClass]="{'last': last}">
+          <div class="education-header">
+            <div class="education-year">{{ edu.year }}</div>
+            <h3 class="education-degree">{{ edu.degree }}</h3>
+          </div>
+
+          <div class="education-info">
+            <div class="education-school">
+              <span>{{ edu.school }}</span>
+            </div>
+            <div class="education-location">
+              <span>{{ edu.location }}</span>
+            </div>
+          </div>
+
+          <p class="education-description">{{ edu.description }}</p>
+
+          <div class="timeline-connector" *ngIf="!last"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION CTA -->
+  <section class="cta-section section" id="contact" #ctaSection [@sectionSlideIn]="ctaAnimationState">
+    <div class="cta-container">
+      <div class="cta-background">
+        <div class="cta-gradient"></div>
+        <div class="cta-pattern"></div>
+      </div>
+
+      <div class="cta-content">
+        <h2 class="cta-title">
+          Prêt à <span class="highlight-text">Collaborer</span> ?
+        </h2>
+
+        <p class="cta-description">
+          Transformons ensemble vos idées en <span class="highlight">solutions digitales</span> performantes.
+          Contactez-moi pour discuter de votre projet et découvrir comment je peux vous accompagner.
+        </p>
+
+        <div class="cta-actions">
+          <a routerLink="/contact" class="btn btn-primary btn-large">
+            <span class="btn-text">Démarrer un Projet</span>
+          </a>
+          <a href="mailto:erwinalberic99@gmail.com" class="btn btn-secondary btn-large">
+            <span class="btn-text">Envoyer un Email</span>
+          </a>
+        </div>
+
+        <div class="trust-indicators">
+          <div class="trust-item">
+            <span>Confidentialité Garantie</span>
+          </div>
+          <div class="trust-item">
+            <span>Réponse Rapide</span>
+          </div>
+          <div class="trust-item">
+            <span>Collaboration Transparente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

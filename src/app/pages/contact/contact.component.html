@@ -1,0 +1,148 @@
+<!-- Contact Hero -->
+<section class="contact-hero">
+  <div class="container">
+    <div class="hero-content text-center">
+      <h1 class="page-title fade-in">Contactez-Moi</h1>
+      <p class="page-subtitle fade-in">
+        Une question ? Un projet ? N'hésitez pas à me contacter
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section section">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info slide-in-left">
+        <h2 class="section-title">Informations de Contact</h2>
+        <p class="contact-description">
+          Je suis toujours ouvert aux nouvelles opportunités et collaborations. 
+          N'hésitez pas à me contacter via le formulaire ou directement par les 
+          coordonnées ci-dessous.
+        </p>
+        
+        <div class="info-cards">
+          <div class="info-card" *ngFor="let info of contactInfo">
+            <div class="info-content">
+              <div class="info-label">{{ info.label }}</div>
+              <a *ngIf="info.link; else noLink" 
+                 [href]="info.link" 
+                 class="info-value link"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                {{ info.value }}
+              </a>
+              <ng-template #noLink>
+                <div class="info-value">{{ info.value }}</div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+        <div class="availability-note">
+          <div class="availability-badge">
+            <span class="status-dot"></span>
+            Disponible pour de nouveaux projets
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper slide-in-right">
+        <div class="card">
+          <h2 class="form-title">Envoyez-moi un Message</h2>
+          
+          <!-- Success Message -->
+          <div *ngIf="submitSuccess" class="alert alert-success">
+            {{ message }}
+          </div>
+
+          <!-- Error Message -->
+          <div *ngIf="submitError" class="alert alert-error">
+            {{ message }}
+          </div>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- Name Field -->
+            <div class="form-group">
+              <label for="name" class="form-label">
+                Nom Complet <span class="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                formControlName="name"
+                class="form-input"
+                [class.error]="f['name'].invalid && f['name'].touched"
+                placeholder="Votre nom"
+                aria-label="Nom complet">
+              <span class="form-error" *ngIf="getErrorMessage('name')">
+                {{ getErrorMessage('name') }}
+              </span>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+              <label for="email" class="form-label">
+                Email <span class="required">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                class="form-input"
+                [class.error]="f['email'].invalid && f['email'].touched"
+                placeholder="votre.email@example.com"
+                aria-label="Adresse email">
+              <span class="form-error" *ngIf="getErrorMessage('email')">
+                {{ getErrorMessage('email') }}
+              </span>
+            </div>
+
+            <!-- Subject Field -->
+            <div class="form-group">
+              <label for="subject" class="form-label">Sujet</label>
+              <input
+                type="text"
+                id="subject"
+                formControlName="subject"
+                class="form-input"
+                placeholder="Sujet de votre message"
+                aria-label="Sujet du message">
+            </div>
+
+            <!-- Message Field -->
+            <div class="form-group">
+              <label for="message" class="form-label">
+                Message <span class="required">*</span>
+              </label>
+              <textarea
+                id="message"
+                formControlName="message"
+                class="form-textarea"
+                [class.error]="f['message'].invalid && f['message'].touched"
+                placeholder="Votre message..."
+                rows="6"
+                aria-label="Votre message"></textarea>
+              <span class="form-error" *ngIf="getErrorMessage('message')">
+                {{ getErrorMessage('message') }}
+              </span>
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg"
+              [disabled]="isSubmitting"
+              [class.loading]="isSubmitting">
+              <span *ngIf="!isSubmitting">Envoyer le Message</span>
+              <span *ngIf="isSubmitting">Envoi en cours...</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

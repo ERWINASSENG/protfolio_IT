@@ -1,0 +1,54 @@
+<footer class="footer">
+  <div class="footer-content container">
+    <div class="footer-grid">
+      <!-- About Section -->
+      <div class="footer-section">
+        <h3 class="footer-title">Portfolio Professionnel</h3>
+        <p class="footer-description">
+          Développeur passionné et expert IT, je mets mes compétences au service 
+          de vos projets avec professionnalisme et créativité.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4 class="footer-subtitle">Navigation</h4>
+        <ul class="footer-links">
+          <li *ngFor="let link of quickLinks">
+            <a [routerLink]="link.path" class="footer-link">
+              {{ link.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Social Links -->
+      <div class="footer-section">
+        <h4 class="footer-subtitle">Réseaux Sociaux</h4>
+        <div class="social-links">
+          <a 
+            *ngFor="let social of socialLinks"
+            [href]="social.url"
+            [attr.aria-label]="social.ariaLabel"
+            class="social-link"
+            [ngClass]="'social-' + social.name.toLowerCase()"
+            target="_blank"
+            rel="noopener noreferrer">
+            <img *ngIf="social.image" [src]="social.image" [alt]="social.name" class="social-icon-img">
+            <i *ngIf="!social.image" [ngClass]="social.icon"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; {{ currentYear }} Portfolio Professionnel. Tous droits réservés.
+      </p>
+      <p class="built-with">
+        Conçu par ASSENG ERWIN ALBERIC
+      </p>
+    </div>
+  </div>
+</footer>

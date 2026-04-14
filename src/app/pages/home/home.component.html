@@ -1,0 +1,131 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-wrapper">
+      <!-- Left Label -->
+      <div class="hero-label hero-label-left">
+        <span class="label-text">GESTIONNAIRE</span>
+      </div>
+
+      <!-- Center Portrait -->
+      <div class="hero-portrait-container">
+        <div class="portrait-frame">
+          <img src="IMG-20230907-WA0051.jpg" alt="Portrait" class="portrait-image">
+        </div>
+        <!-- Chat Button -->
+        <button class="chat-button" aria-label="Start a conversation">
+          Hi
+        </button>
+      </div>
+
+      <!-- Right Label & Tagline -->
+      <div class="hero-label hero-label-right">
+        <span class="label-text">POLYVALENT</span>
+        <!--<p class="hero-tagline">I'm a US-based digital designer and Framer developer.</p>-->
+      </div>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="hero-actions">
+      <a routerLink="/contact" class="btn btn-primary btn-lg">
+        Me Contacter
+      </a>
+      <a routerLink="/about" class="btn btn-secondary btn-lg">
+        En Savoir Plus
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card fade-in" *ngFor="let stat of stats">
+        <div class="stat-value">{{ stat.value }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="section-title">
+        <span class="title-main">Domaines de </span>
+        <span class="title-highlight">Compétences</span>
+      </h2>
+      <p class="section-description">
+        Une expertise complète en IT et développement pour transformer vos projets
+      </p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services">
+        <div class="card-content">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <div class="card-features">
+            <div class="feature-item" *ngFor="let feature of service.features">
+              <span>{{ feature }}</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a routerLink="/contact" class="btn btn-small btn-primary">
+              <span>Me Contacter</span>
+            </a>
+            <a routerLink="/about" class="btn btn-small btn-secondary">
+              <span>En Savoir Plus</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section class="projects-section section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="section-title">
+        <span class="title-main">Nos </span>
+        <span class="title-highlight">Réalisations</span>
+      </h2>
+      <p class="section-description">
+        Découvrez quelques-uns des projets sur lesquels nous avons travaillé.
+      </p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of projects">
+        <!-- <div class="project-image">
+          <img [src]="project.image" [alt]="project.title">
+        </div> -->
+        <div class="project-content">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <a [href]="project.link" target="_blank" class="btn btn-small btn-secondary">
+            <span>Visiter le site</span>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content text-center">
+      <h2 class="cta-title">Prêt à démarrer votre projet ?</h2>
+      <p class="cta-description">
+        Discutons de vos besoins et trouvons ensemble la meilleure solution
+      </p>
+      <a routerLink="/contact" class="btn btn-primary btn-lg">
+        Démarrer une Discussion
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,123 @@
+/* ============================================
+   Utilitaires de Layout
+   ============================================ */
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    @include responsive-padding(0 var(--spacing-sm), 0 var(--spacing-md), 0 var(--spacing-lg));
+
+    @include respond-to('up-sm') {
+        max-width: 100%;
+    }
+
+    @include respond-to('up-md') {
+        max-width: var(--container-md);
+    }
+
+    @include respond-to('up-lg') {
+        max-width: var(--container-lg);
+    }
+
+    @include respond-to('up-xl') {
+        max-width: var(--container-xl);
+    }
+}
+
+.section {
+    @include responsive-padding(var(--spacing-lg) 0, var(--spacing-2xl) 0, var(--spacing-3xl) 0);
+}
+
+/* ============================================
+   Titres et Sections Réutilisables
+   ============================================ */
+
+.page-title {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-2xl);
+
+    @media (min-width: 768px) {
+        font-size: var(--font-size-4xl);
+    }
+
+    @media (min-width: 1024px) {
+        font-size: var(--font-size-5xl);
+    }
+}
+
+.page-subtitle {
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: var(--font-size-sm);
+
+    @media (min-width: 768px) {
+        font-size: var(--font-size-base);
+    }
+
+    @media (min-width: 1024px) {
+        font-size: var(--font-size-lg);
+    }
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+
+    @media (min-width: 768px) {
+        margin-bottom: var(--spacing-3xl);
+    }
+}
+
+.section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+
+    @media (min-width: 768px) {
+        font-size: var(--font-size-3xl);
+    }
+
+    @media (min-width: 1024px) {
+        font-size: var(--font-size-4xl);
+    }
+
+    .title-main {
+        color: var(--color-text-primary);
+    }
+
+    .title-highlight {
+        color: var(--color-primary);
+    }
+}
+
+.section-description,
+.section-intro {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    max-width: 700px;
+    margin: 0 auto var(--spacing-lg);
+    font-size: var(--font-size-base);
+
+    @media (min-width: 768px) {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* ============================================
+   Utilitaires Responsive
+   ============================================ */
+
+.hide-mobile {
+    @media (max-width: 767px) {
+        display: none !important;
+    }
+}
+
+.hide-desktop {
+    @media (min-width: 768px) {
+        display: none !important;
+    }
+}

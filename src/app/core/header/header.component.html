@@ -1,0 +1,65 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <nav class="navbar container" role="navigation" aria-label="Navigation principale">
+    <div class="navbar-brand">
+      <a routerLink="/" class="logo" (click)="closeMenu()" aria-label="Retour à l'accueil">
+        <span class="logo-text">ERWIN ALBERIC ASSENG</span>
+      </a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="navbar-menu" [class.active]="isMenuOpen">
+      <ul class="nav-list">
+        <li class="nav-item" *ngFor="let item of navItems">
+          <ng-container *ngIf="!item.children; else hasChildren">
+            <a [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: item.exact }"
+              class="nav-link" (click)="closeMenu()">
+              {{ item.label }}
+            </a>
+          </ng-container>
+
+          <ng-template #hasChildren>
+            <div class="nav-dropdown" [class.active]="activeDropdown === item.label">
+              <button type="button" class="nav-link dropdown-toggle" (click)="toggleDropdown(item.label)"
+                [attr.aria-expanded]="activeDropdown === item.label"
+                [attr.aria-label]="'Toggle ' + item.label + ' submenu'">
+                {{ item.label }}
+              </button>
+              <ul class="dropdown-menu">
+                <li *ngFor="let child of item.children">
+                  <a [routerLink]="child.path" routerLinkActive="active" class="dropdown-link" (click)="closeMenu()">
+                    {{ child.label }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Theme Toggle Switch -->
+    <div class="theme-toggle-wrapper" [title]="themeLabel()">
+      <button class="theme-toggle-switch" (click)="toggleTheme()" [attr.aria-label]="themeLabel()"
+        [attr.aria-pressed]="isDarkMode()" type="button" [class.dark-mode]="isDarkMode()">
+        <span class="toggle-slider">
+          <span class="toggle-icon light-label">OFF</span>
+          <span class="toggle-icon dark-label">ON</span>
+        </span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle hide-desktop" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen"
+      aria-label="Toggle navigation menu" type="button">
+      <span class="hamburger-icon">
+        <span class="line" [class.open]="isMenuOpen"></span>
+        <span class="line" [class.open]="isMenuOpen"></span>
+        <span class="line" [class.open]="isMenuOpen"></span>
+      </span>
+    </button>
+
+    <!-- Overlay for mobile menu -->
+    <div class="menu-overlay hide-desktop" [class.active]="isMenuOpen" (click)="closeMenu()" aria-hidden="true">
+    </div>
+  </nav>
+</header>
