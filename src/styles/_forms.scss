@@ -1,141 +1,57 @@
 /* ============================================
-   Styles de Formulaires
+   Forms
    ============================================ */
 
 .form-group {
-    margin-bottom: var(--spacing-lg);
-
-    @media (min-width: 768px) {
-        margin-bottom: var(--spacing-xl);
-    }
+  margin-bottom: var(--sp-4);
 }
 
 .form-label {
-    display: block;
-    margin-bottom: var(--spacing-sm);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text-primary);
-    font-size: var(--font-size-sm);
-    transition: color 0.3s ease;
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text-2);
+  margin-bottom: var(--sp-2);
 
-    @media (min-width: 768px) {
-        font-size: var(--font-size-base);
-        margin-bottom: var(--spacing-md);
-    }
+  .required {
+    color: var(--clr-error);
+  }
 }
 
 .form-input,
 .form-textarea {
-    width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: var(--font-size-sm);
-    font-family: inherit;
-    color: var(--color-text-primary);
-    background-color: var(--color-bg-card);
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--clr-bg-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-lg);
+  color: var(--clr-text);
+  font-size: var(--fs-base);
+  transition: all var(--t-fast);
+
+  &:focus {
     outline: none;
+    border-color: var(--clr-primary);
+    box-shadow: var(--glow-sm);
+  }
 
-    @media (min-width: 768px) {
-        padding: var(--spacing-md) var(--spacing-lg);
-        font-size: var(--font-size-base);
-    }
+  &.error {
+    border-color: var(--clr-error);
+  }
 
-    &::placeholder {
-        color: var(--color-text-muted);
-        opacity: 0.7;
-    }
-
-    &:focus {
-        border-color: var(--color-primary);
-        box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.1);
-        background-color: var(--color-bg-primary);
-    }
-
-    &:hover:not(:focus):not(.error) {
-        border-color: var(--color-primary-dark);
-    }
-
-    &.error {
-        border-color: var(--color-error);
-        background-color: rgba(239, 68, 68, 0.05);
-    }
-
-    &:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-        background-color: var(--color-bg-secondary);
-    }
+  &::placeholder {
+    color: var(--clr-text-3);
+  }
 }
 
 .form-textarea {
-    resize: vertical;
-    min-height: 120px;
-    line-height: var(--line-height-relaxed);
-
-    @media (min-width: 768px) {
-        min-height: 150px;
-    }
+  min-height: 120px;
+  resize: vertical;
 }
 
 .form-error {
-    display: block;
-    margin-top: var(--spacing-xs);
-    font-size: var(--font-size-xs);
-    color: var(--color-error);
-    animation: slideDown 0.2s ease-out;
-
-    @media (min-width: 768px) {
-        font-size: var(--font-size-sm);
-        margin-top: var(--spacing-sm);
-    }
-}
-
-.form-hint {
-    display: block;
-    margin-top: var(--spacing-xs);
-    font-size: var(--font-size-xs);
-    color: var(--color-text-muted);
-
-    @media (min-width: 768px) {
-        font-size: var(--font-size-sm);
-    }
-}
-
-/* Animations pour formulaires */
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-4px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes spin {
-    from {
-        transform: translateY(-50%) rotate(0deg);
-    }
-
-    to {
-        transform: translateY(-50%) rotate(360deg);
-    }
-}
-
-@keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: 0.7;
-        transform: scale(1.1);
-    }
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--clr-error);
+  margin-top: var(--sp-1);
 }

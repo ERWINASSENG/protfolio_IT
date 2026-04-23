@@ -54,6 +54,7 @@ export class ItSupportComponent {
     { name: 'Automatisation (PowerShell, Python)', icon: 'fas fa-robot' },
     { name: 'ERP Odoo', icon: 'fas fa-cogs' },
     { name: 'Création d\'agents IA', icon: 'fas fa-brain' },
+    { name: 'Gestion administrative', icon: 'fas fa-file-invoice' },
     { name: 'Développement web', icon: 'fas fa-code' }
   ];
 

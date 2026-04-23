@@ -29,7 +29,6 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/career/it-support/it-support.component').then(m => m.ItSupportComponent),
         title: 'IT Support - Carrière'
       },
-
       {
         path: 'freelance-dev',
         loadComponent: () => import('./pages/career/freelance-dev/freelance-dev.component').then(m => m.FreelanceDevComponent),

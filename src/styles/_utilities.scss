@@ -1,123 +1,63 @@
 /* ============================================
-   Utilitaires de Layout
+   Utilities
    ============================================ */
 
-.container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    @include responsive-padding(0 var(--spacing-sm), 0 var(--spacing-md), 0 var(--spacing-lg));
+// Spacing utilities
+.mt-1 { margin-top: var(--sp-1); }
+.mt-2 { margin-top: var(--sp-2); }
+.mt-3 { margin-top: var(--sp-3); }
+.mt-4 { margin-top: var(--sp-4); }
+.mt-6 { margin-top: var(--sp-6); }
+.mt-8 { margin-top: var(--sp-8); }
+.mt-16 { margin-top: var(--sp-16); }
 
-    @include respond-to('up-sm') {
-        max-width: 100%;
-    }
+.mb-1 { margin-bottom: var(--sp-1); }
+.mb-2 { margin-bottom: var(--sp-2); }
+.mb-4 { margin-bottom: var(--sp-4); }
+.mb-6 { margin-bottom: var(--sp-6); }
+.mb-8 { margin-bottom: var(--sp-8); }
+.mb-16 { margin-bottom: var(--sp-16); }
 
-    @include respond-to('up-md') {
-        max-width: var(--container-md);
-    }
+// Display
+.hidden { display: none; }
+.block { display: block; }
+.flex { display: flex; }
+.grid { display: grid; }
 
-    @include respond-to('up-lg') {
-        max-width: var(--container-lg);
-    }
+// Flex utilities
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: var(--sp-2); }
+.gap-4 { gap: var(--sp-4); }
+.gap-6 { gap: var(--sp-6); }
 
-    @include respond-to('up-xl') {
-        max-width: var(--container-xl);
-    }
+// Status dot
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--clr-success);
+  border-radius: var(--r-full);
+  animation: pulse 2s ease-in-out infinite;
 }
 
-.section {
-    @include responsive-padding(var(--spacing-lg) 0, var(--spacing-2xl) 0, var(--spacing-3xl) 0);
-}
+// Alerts
+.alert {
+  padding: var(--sp-4);
+  border-radius: var(--r-lg);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--sp-4);
 
-/* ============================================
-   Titres et Sections Réutilisables
-   ============================================ */
+  &.alert-success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid var(--clr-success);
+    color: var(--clr-success);
+  }
 
-.page-title {
-    margin-bottom: var(--spacing-md);
-    font-size: var(--font-size-2xl);
-
-    @media (min-width: 768px) {
-        font-size: var(--font-size-4xl);
-    }
-
-    @media (min-width: 1024px) {
-        font-size: var(--font-size-5xl);
-    }
-}
-
-.page-subtitle {
-    color: var(--color-text-secondary);
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: var(--font-size-sm);
-
-    @media (min-width: 768px) {
-        font-size: var(--font-size-base);
-    }
-
-    @media (min-width: 1024px) {
-        font-size: var(--font-size-lg);
-    }
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: var(--spacing-2xl);
-
-    @media (min-width: 768px) {
-        margin-bottom: var(--spacing-3xl);
-    }
-}
-
-.section-title {
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text-primary);
-
-    @media (min-width: 768px) {
-        font-size: var(--font-size-3xl);
-    }
-
-    @media (min-width: 1024px) {
-        font-size: var(--font-size-4xl);
-    }
-
-    .title-main {
-        color: var(--color-text-primary);
-    }
-
-    .title-highlight {
-        color: var(--color-primary);
-    }
-}
-
-.section-description,
-.section-intro {
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
-    max-width: 700px;
-    margin: 0 auto var(--spacing-lg);
-    font-size: var(--font-size-base);
-
-    @media (min-width: 768px) {
-        font-size: var(--font-size-lg);
-    }
-}
-
-/* ============================================
-   Utilitaires Responsive
-   ============================================ */
-
-.hide-mobile {
-    @media (max-width: 767px) {
-        display: none !important;
-    }
-}
-
-.hide-desktop {
-    @media (min-width: 768px) {
-        display: none !important;
-    }
+  &.alert-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--clr-error);
+    color: var(--clr-error);
+  }
 }

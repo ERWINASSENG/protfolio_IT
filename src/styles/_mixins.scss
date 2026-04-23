@@ -1,220 +1,158 @@
 /* ============================================
-   Mixins Responsive
+   Mixins SCSS
    ============================================ */
 
-@mixin respond-to($breakpoint) {
-    @if $breakpoint =='xs' {
-        @media (max-width: 319px) {
-            @content;
-        }
-    }
-
-    @else if $breakpoint =='sm' {
-        @media (max-width: 479px) {
-            @content;
-        }
-    }
-
-    @else if $breakpoint =='md' {
-        @media (max-width: 767px) {
-            @content;
-        }
-    }
-
-    @else if $breakpoint =='lg' {
-        @media (max-width: 1023px) {
-            @content;
-        }
-    }
-
-    @else if $breakpoint =='xl' {
-        @media (max-width: 1279px) {
-            @content;
-        }
-    }
-
-    @else if $breakpoint =='up-sm' {
-        @media (min-width: 480px) {
-            @content;
-        }
-    }
-
-    @else if $breakpoint =='up-md' {
-        @media (min-width: 768px) {
-            @content;
-        }
-    }
-
-    @else if $breakpoint =='up-lg' {
-        @media (min-width: 1024px) {
-            @content;
-        }
-    }
-
-    @else if $breakpoint =='up-xl' {
-        @media (min-width: 1280px) {
-            @content;
-        }
-    }
+// Breakpoint mixin (bp)
+@mixin bp($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @media (max-width: 479px) { @content; }
+  }
+  @else if $breakpoint == '-sm' or $breakpoint == 'sm-down' {
+    @media (max-width: 639px) { @content; }
+  }
+  @else if $breakpoint == 'sm' {
+    @media (min-width: 480px) { @content; }
+  }
+  @else if $breakpoint == '-md' or $breakpoint == 'md-down' {
+    @media (max-width: 767px) { @content; }
+  }
+  @else if $breakpoint == 'md' {
+    @media (min-width: 768px) { @content; }
+  }
+  @else if $breakpoint == '-lg' or $breakpoint == 'lg-down' {
+    @media (max-width: 1023px) { @content; }
+  }
+  @else if $breakpoint == 'lg' {
+    @media (min-width: 1024px) { @content; }
+  }
+  @else if $breakpoint == '-xl' or $breakpoint == 'xl-down' {
+    @media (max-width: 1279px) { @content; }
+  }
+  @else if $breakpoint == 'xl' {
+    @media (min-width: 1280px) { @content; }
+  }
 }
 
-@mixin responsive-grid($cols-mobile, $cols-tablet, $cols-desktop, $gap: var(--spacing-lg)) {
-    display: grid;
-    grid-template-columns: repeat($cols-mobile, 1fr);
-    gap: $gap;
-
-    @include respond-to('up-md') {
-        grid-template-columns: repeat($cols-tablet, 1fr);
-    }
-
-    @include respond-to('up-lg') {
-        grid-template-columns: repeat($cols-desktop, 1fr);
-    }
+// Glassmorphism mixin
+@mixin glass {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--clr-border);
 }
 
-@mixin responsive-flex($direction-mobile: column, $direction-desktop: row) {
-    display: flex;
-    flex-direction: $direction-mobile;
-
-    @include respond-to('up-md') {
-        flex-direction: $direction-desktop;
-    }
+// Responsive font size (rf)
+@mixin rf($mobile, $tablet, $desktop) {
+  font-size: $mobile;
+  @media (min-width: 768px) { font-size: $tablet; }
+  @media (min-width: 1024px) { font-size: $desktop; }
 }
 
-@mixin responsive-font($size-mobile, $size-tablet, $size-desktop) {
-    font-size: $size-mobile;
-
-    @include respond-to('up-md') {
-        font-size: $size-tablet;
-    }
-
-    @include respond-to('up-lg') {
-        font-size: $size-desktop;
-    }
+// Focus ring
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--clr-primary);
+    outline-offset: 2px;
+  }
 }
 
-@mixin responsive-padding($mobile, $tablet, $desktop) {
-    padding: $mobile;
-
-    @include respond-to('up-md') {
-        padding: $tablet;
-    }
-
-    @include respond-to('up-lg') {
-        padding: $desktop;
-    }
-}
-
-@mixin responsive-gap($mobile, $tablet, $desktop) {
-    gap: $mobile;
-
-    @include respond-to('up-md') {
-        gap: $tablet;
-    }
-
-    @include respond-to('up-lg') {
-        gap: $desktop;
-    }
-}
-
-@mixin hide-on($breakpoint) {
-    @include respond-to($breakpoint) {
-        display: none !important;
-    }
-}
-
-@mixin show-on($breakpoint) {
-    display: none;
-
-    @include respond-to($breakpoint) {
-        display: block;
-    }
-}
-
-@mixin flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-@mixin flex-between {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-@mixin gradient-text($from: var(--color-primary), $to: var(--color-secondary)) {
-    background: linear-gradient(135deg, $from, $to);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-@mixin gradient-bg($from: var(--color-primary), $to: var(--color-secondary)) {
-    background: linear-gradient(135deg, $from, $to);
-}
-
-@mixin hover-lift {
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
-
-    &:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-    }
-}
-
+// Focus outline (alias for focus-ring)
 @mixin focus-outline {
-    &:focus-visible {
-        outline: 3px solid var(--color-primary);
-        outline-offset: 3px;
-    }
+  &:focus-visible {
+    outline: 2px solid var(--clr-primary);
+    outline-offset: 2px;
+  }
 }
 
-/* ============================================
-   Mixins Responsive Padding/Margin
-   ============================================ */
+// Flex center
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+// Flex between
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Hover lift
+@mixin hover-lift {
+  transition: transform var(--t-base), box-shadow var(--t-base);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+// Gradient text
+@mixin gradient-text($from: var(--clr-primary), $to: var(--clr-primary-dark)) {
+  background: linear-gradient(135deg, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Card hover
+@mixin card-hover {
+  transition: all var(--t-base);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--clr-border-2);
+  }
+}
+
+// Gradient background
+@mixin gradient-bg($from: var(--clr-primary), $to: var(--clr-primary-dark)) {
+  background: linear-gradient(135deg, $from, $to);
+}
+
+// Responsive section padding
 @mixin responsive-section-padding {
-    padding: var(--spacing-lg) 0;
+  padding: var(--sp-16) 0;
 
-    @media (min-width: 768px) {
-        padding: var(--spacing-2xl) 0;
-    }
-
-    @media (min-width: 1024px) {
-        padding: var(--spacing-3xl) 0;
-    }
+  @include bp(md) {
+    padding: var(--sp-20) 0;
+  }
 }
 
 @mixin responsive-section-padding-vertical($mobile-top, $mobile-bottom, $tablet-top, $tablet-bottom, $desktop-top, $desktop-bottom) {
-    padding: $mobile-top 0 $mobile-bottom;
+  padding: $mobile-top 0 $mobile-bottom;
 
-    @media (min-width: 768px) {
-        padding: $tablet-top 0 $tablet-bottom;
-    }
+  @include bp(md) {
+    padding: $tablet-top 0 $tablet-bottom;
+  }
 
-    @media (min-width: 1024px) {
-        padding: $desktop-top 0 $desktop-bottom;
-    }
+  @include bp(lg) {
+    padding: $desktop-top 0 $desktop-bottom;
+  }
 }
 
-@mixin responsive-text-size($mobile, $tablet, $desktop) {
-    font-size: $mobile;
+// Responsive gap
+@mixin responsive-gap($mobile, $tablet, $desktop) {
+  gap: $mobile;
 
-    @media (min-width: 768px) {
-        font-size: $tablet;
-    }
+  @include bp(md) {
+    gap: $tablet;
+  }
 
-    @media (min-width: 1024px) {
-        font-size: $desktop;
-    }
+  @include bp(lg) {
+    gap: $desktop;
+  }
 }
 
-@mixin card-hover {
-    transition: all var(--transition-base);
+// Responsive font
+@mixin responsive-font($mobile, $tablet, $desktop) {
+  font-size: $mobile;
 
-    &:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-    }
+  @include bp(md) {
+    font-size: $tablet;
+  }
+
+  @include bp(lg) {
+    font-size: $desktop;
+  }
 }

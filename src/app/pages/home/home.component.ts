@@ -18,9 +18,15 @@ export class HomeComponent {
       features: ['Configuration réseau', 'Gestion des incidents', 'Maintenance préventive']
     },
     {
+      icon: 'fas fa-chart-line',
+      title: 'Gestion Comptable & Administrative',
+      description: 'Expertise en gestion comptable avec Odoo, déclarations fiscales et gestion administrative. Maîtrise des processus comptables et optimisation fiscale pour tous types d\'organisations.',
+      features: ['Comptabilité Odoo', 'Déclarations fiscales', 'Suivi budgétaire']
+    },
+    {
       icon: 'fas fa-briefcase',
       title: 'Développeur Freelance',
-      description: 'Développeur freelance passionné avec plus de 3 ans d\'expérience. Je propose des solutions IT complètes, du développement web aux intégrations système, adaptées aux besoins spécifiques de chaque client.',
+      description: 'Développeur freelance passionné avec plus de 3 ans d\'expérience. Je propose des solutions IT complètes, du développement web à la gestion comptable, adaptées aux besoins spécifiques de chaque client.',
       features: ['3+ ans d\'expérience', '15+ projets réalisés', '100% clients satisfaits']
     }
   ];

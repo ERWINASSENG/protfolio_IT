@@ -1,74 +1,32 @@
 /* ============================================
-   Typographie
+   Typography
    ============================================ */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font-family-heading);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-tight);
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text-primary);
+.text-gradient {
+  @include gradient-text;
 }
 
-h1 {
-    @include responsive-font(var(--font-size-2xl), var(--font-size-4xl), var(--font-size-5xl));
+.mono {
+  font-family: $font-mono;
 }
 
-h2 {
-    @include responsive-font(var(--font-size-xl), var(--font-size-3xl), var(--font-size-4xl));
+.display {
+  font-family: $font-display;
 }
 
-h3 {
-    @include responsive-font(var(--font-size-lg), var(--font-size-2xl), var(--font-size-3xl));
-}
+// Text colors
+.text-primary { color: var(--clr-text); }
+.text-secondary { color: var(--clr-text-2); }
+.text-muted { color: var(--clr-text-3); }
 
-h4 {
-    font-size: var(--font-size-2xl);
-}
+// Font weights
+.fw-normal { font-weight: var(--fw-normal); }
+.fw-medium { font-weight: var(--fw-medium); }
+.fw-semibold { font-weight: var(--fw-semibold); }
+.fw-bold { font-weight: var(--fw-bold); }
+.fw-black { font-weight: var(--fw-black); }
 
-h5 {
-    font-size: var(--font-size-xl);
-}
-
-h6 {
-    font-size: var(--font-size-lg);
-}
-
-p {
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text-secondary);
-    text-align: justify;
-    text-justify: inter-word;
-    word-spacing: normal;
-    hyphens: auto;
-}
-
-a {
-    color: var(--color-primary);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-
-    &:hover {
-        color: var(--color-primary-dark);
-    }
-
-    &:focus-visible {
-        outline: 2px solid var(--color-primary);
-        outline-offset: 2px;
-        border-radius: var(--radius-sm);
-    }
-}
-
-.text-center {
-    text-align: center;
-}
-
-.highlight {
-    color: var(--color-primary);
-    font-weight: var(--font-weight-semibold);
-}
+// Text alignment
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }

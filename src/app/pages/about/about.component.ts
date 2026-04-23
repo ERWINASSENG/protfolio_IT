@@ -218,6 +218,12 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       value: '10+',
       label: 'Projets IT',
       animationState: 'hidden'
+    },
+    {
+      icon: 'fas fa-calculator',
+      value: '5+',
+      label: 'Projets Comptables',
+      animationState: 'hidden'
     }
   ];
 
@@ -261,6 +267,7 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       skills: [
         'Développement Web',
         'Support IT',
+        'Comptabilité',
         'ERP Odoo',
         'Automatisation',
         'Gestion de projets',
@@ -282,7 +289,21 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
       school: 'SUP\'PTIC',
       location: 'Yaoundé, Cameroun',
       year: '2023',
-      description: 'Formation complète en télécommunications et systèmes d\'information.'
+      description: 'Formation complète en gestion d\'entreprise avec focus sur la gestion administrative et systèmes d\'information.'
+    },
+    {
+      degree: 'Formation Professionnelle - Gestion des Entreprises',
+      school: 'SUP\'PTIC',
+      location: 'Yaoundé, Cameroun',
+      year: '2023',
+      description: 'Spécialisation en gestion administrative et comptabilité.'
+    },
+    {
+      degree: 'Formation Professionnelle - Comptabilité et Fiscalité',
+      school: 'Les Ateliers Pratiques',
+      location: 'Douala, Cameroun',
+      year: '2021',
+      description: 'Maîtrise des principes comptables, déclarations fiscales et gestion budgétaire.'
     },
     {
       degree: 'Baccalauréat A4ALL',
@@ -350,19 +371,27 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getExpertiseTitle(index: number): string {
-    return 'Support IT & Infrastructure';
+    return index === 0 ? 'Support IT & Infrastructure' : 'Gestion Comptable & Administrative';
   }
 
   getExpertiseDescription(index: number): string {
-    return 'Installation, configuration et maintenance des infrastructures IT. Gestion des postes de travail, réseaux et résolution rapide des incidents pour garantir la continuité des services critiques.';
+    const descriptions = [
+      'Installation, configuration et maintenance des infrastructures IT. Gestion des postes de travail, réseaux et résolution rapide des incidents pour garantir la continuité des services critiques.',
+      'Expertise en gestion comptable avec Odoo, déclarations fiscales et gestion administrative. Maîtrise des processus comptables et optimisation fiscale pour tous types d\'organisations.'
+    ];
+    return descriptions[index];
   }
 
   getExpertiseFeatures(index: number): string[] {
-    return ['Configuration réseau', 'Gestion des incidents', 'Maintenance préventive'];
+    const features = [
+      ['Configuration réseau', 'Gestion des incidents', 'Maintenance préventive'],
+      ['Comptabilité Odoo', 'Déclarations fiscales', 'Suivi budgétaire']
+    ];
+    return features[index];
   }
 
   getCarriereLink(index: number): string {
-    return index === 0 ? '/career/it-support' : '/career/freelance-dev';
+    return index === 0 ? '/career/it-support' : '/career/admin-accounting';
   }
 
   // ============================================

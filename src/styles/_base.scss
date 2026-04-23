@@ -1,87 +1,90 @@
 /* ============================================
-   Reset et Base Styles
+   Base & Reset
    ============================================ */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    scroll-behavior: smooth;
-    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
-    background-attachment: fixed;
-    position: relative;
-    overflow-x: hidden;
-}
-
-html::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(circle at 20% 50%, rgba(163, 230, 53, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(163, 230, 53, 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 40% 0%, rgba(163, 230, 53, 0.03) 0%, transparent 40%);
-    pointer-events: none;
-    z-index: 1;
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-normal);
-    line-height: var(--line-height-normal);
-    color: var(--color-text-primary);
-    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
-    background-attachment: fixed;
-    min-height: 100vh;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: $font-body;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: var(--lh-normal);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(ellipse at 50% 0%, rgba(163, 230, 53, 0.08) 0%, transparent 40%),
-        radial-gradient(ellipse at 0% 100%, rgba(163, 230, 53, 0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 100% 50%, rgba(163, 230, 53, 0.04) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-    mix-blend-mode: screen;
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
-/* ============================================
-   Images Responsive
-   ============================================ */
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
 }
 
-.hero-img,
-.portrait-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    display: block;
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
-.image-dark-filter {
-    filter: brightness(1) contrast(1.1);
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--sp-4);
+
+  @include bp(md) {
+    padding: 0 var(--sp-8);
+  }
+
+  @include bp(lg) {
+    padding: 0 var(--sp-12);
+  }
+}
+
+// Section spacing
+.section {
+  padding: var(--sp-16) 0;
+
+  @include bp(md) {
+    padding: var(--sp-20) 0;
+  }
 }

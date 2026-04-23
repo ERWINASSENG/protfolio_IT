@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       exact: false,
       children: [
         { label: 'IT Support', path: '/career/it-support' },
+        { label: 'Admin & Comptabilité', path: '/career/admin-accounting' },
         { label: 'Développement Freelance', path: '/career/freelance-dev' }
       ]
     },

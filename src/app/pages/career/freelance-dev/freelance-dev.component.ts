@@ -48,6 +48,19 @@ export class FreelanceDevComponent {
         'Évaluation des performances',
         'Tableaux de bord RH personnalisés'
       ]
+    },
+    {
+      title: 'Automatisation des Processus Comptables',
+      client: 'Projet personnel',
+      period: '2022-2023',
+      description: 'Développement de scripts pour automatiser les tâches comptables récurrentes.',
+      technologies: ['Python', 'Pandas', 'Odoo API', 'Automatisation'],
+      achievements: [
+        'Génération automatique des écritures comptables',
+        'Rapprochement bancaire automatisé',
+        'Génération des états financiers',
+        'Réduction des erreurs humaines'
+      ]
     }
   ];
 
